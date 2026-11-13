@@ -1,4 +1,6 @@
-# Measurement reference — 0.1
+# Measurement reference
+
+Library version **0.1** · [Package overview](../README.md)
 
 Load `main.flatppl` to access the functions below. The library uses FlatPPL
 language compatibility `0.1`; each source module also loads independently.

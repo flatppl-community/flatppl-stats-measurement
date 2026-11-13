@@ -1,5 +1,7 @@
 # flatppl-stats-measurement
 
+[Function reference](docs/reference.md)
+
 Gaussian measurement errors, correlated uncertainties, affine calibration, and
 event probabilities for rounded or censored readings in FlatPPL 0.1.
 
