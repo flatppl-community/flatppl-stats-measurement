@@ -57,7 +57,7 @@ Arguments: aligned `means=mu[N]`, `sigma=s[N]`, and correlation matrix
 unit diagonal; `s_i>0`. Returns a normalized law on real vectors `[N]`.
 
 ```math
-D=\operatorname{diag}(s),\qquad \Sigma=DRD,\qquad
+D=\mathrm{diag}(s),\qquad \Sigma=DRD,\qquad
 Y\mid\mu,s,R\sim N_N(\mu,\Sigma).
 ```
 
