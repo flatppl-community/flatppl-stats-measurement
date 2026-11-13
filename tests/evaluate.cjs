@@ -14,6 +14,10 @@ const { createWorkerHandler } = require(path.join(enginePath, 'worker.ts'));
       .filter(name => name.endsWith('.flatppl')).map(name => dir + '/' + name))];
   const sources = Object.fromEntries(modulePaths
     .map(name => [path.join(root, name), fs.readFileSync(path.join(root, name), 'utf8')]));
+  // Exercise the pinned example offline against this checkout's library sources.
+  const example = sources[path.join(root, 'examples/playground.flatppl')];
+  const pinnedBase = example.match(/https:\/\/raw\.githubusercontent\.com\/BJMCox\/flatppl-stats-measurement\/[0-9a-f]{40}\//)?.[0];
+  if (pinnedBase) for (const name of modulePaths) sources[pinnedBase + name] = sources[path.join(root, name)];
   const source = expressions ? 'flatppl_compat = "0.1"\na = load_module("../main.flatppl")\n'
     + expressions.map((expression, i) => `probe${i} = ${expression}`).join('\n') : request.source;
   const model = engine.processSource(source, {

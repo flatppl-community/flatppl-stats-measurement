@@ -5,7 +5,7 @@ Infer offset and gain from five exact standards. Known measurement uncertainties
 are response standard deviations. The posterior is a two-dimensional Gaussian.
 %%%
 flatppl_compat = "0.1"
-measurement = load_module("../main.flatppl")
+measurement = load_module("https://raw.githubusercontent.com/BJMCox/flatppl-stats-measurement/57abdc7ef5016edc4d3f056cd2a9b7cfe92facc6/main.flatppl")
 standards_data = [-2, -1, 0, 1, 2]
 response_data = [-3.3, -1.2, 0.7, 2.6, 4.7]
 sigma_data = [0.3, 0.2, 0.25, 0.2, 0.3]
