@@ -14,7 +14,7 @@ separately from marginal scales. Constructors return normalized observation
 laws; event helpers return scalar probabilities to use as likelihood factors.
 No prior, calibration fit, or uncertainty on the standards is implicit.
 
-The [calibration example](https://live.flatppl.org/#model=https%3A%2F%2Fraw.githubusercontent.com%2FBJMCox%2Fflatppl-stats-measurement%2Fmain%2Fexamples%2Fplayground.flatppl&target=Pi_post)
+The [calibration example](https://live.flatppl.org/#model=https%3A%2F%2Fraw.githubusercontent.com%2Fflatppl-community%2Fflatppl-stats-measurement%2Fmain%2Fexamples%2Fplayground.flatppl&target=Pi_post)
 infers two parameters and has an analytic Gaussian posterior. Its library import
 is pinned to an immutable commit. The [coarsened example](examples/coarsened.flatppl)
 shows a rounding cell and a detection flag. See the
