@@ -1,0 +1,15 @@
+%%%
+# Gaussian measurement and calibration
+
+Normalized Gaussian observation laws and scalar probabilities for coarsened
+observations. Every uncertainty parameter is a standard deviation.
+%%%
+flatppl_compat = "0.1"
+errors = load_module("src/errors.flatppl")
+events = load_module("src/events.flatppl")
+independent_errors = errors.independent_errors
+correlated_errors = errors.correlated_errors
+calibration = errors.calibration
+gaussian_below_probability = events.gaussian_below_probability
+gaussian_above_probability = events.gaussian_above_probability
+gaussian_interval_probability = events.gaussian_interval_probability

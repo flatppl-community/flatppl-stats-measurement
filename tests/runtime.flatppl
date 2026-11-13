@@ -1,0 +1,26 @@
+%%%
+# Deterministic backend fixture
+
+Inputs are mean, sigma, correlation coefficient, offset, and gain. Output
+ordering is fixed for independent CPU/GPU value and derivative checks.
+%%%
+flatppl_compat = "0.1"
+a = load_module("../main.flatppl")
+x = elementof(cartpow(reals, 5))
+mean = x[1]
+sigma = x[2]
+rho = x[3]
+offset = x[4]
+gain = x[5]
+values = [
+    logdensityof(a.independent_errors([mean, mean + 1], sigma), [0.2, 1.4]),
+    logdensityof(a.correlated_errors([mean, mean + 1], [sigma, 0.5], rowstack([[1, rho], [rho, 1]])), [0.2, 1.4]),
+    logdensityof(a.calibration([-1, 0, 2], offset, gain, [0.2, 0.3, 0.4]), [-1.2, 0.5, 4.8]),
+    a.gaussian_below_probability(-1, mean, sigma),
+    a.gaussian_above_probability(1, mean, sigma),
+    a.gaussian_interval_probability(-1, 1, mean, sigma),
+    a.gaussian_interval_probability(5, 6, mean, sigma),
+    a.gaussian_interval_probability(-6, -5, mean, sigma)
+]
+inputs = x
+outputs = values

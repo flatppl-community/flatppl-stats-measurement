@@ -1,0 +1,15 @@
+%%%
+# Rounded measurements and a detection flag
+
+Two independent readings: a value rounded to the nearest 0.1 and a second
+reading reported only as above 1.2. The finite interval is the rounding cell.
+%%%
+flatppl_compat = "0.1"
+measurement = load_module("../main.flatppl")
+mean = elementof(reals)
+rounded_probability = measurement.gaussian_interval_probability(0.95, 1.05, mean, 0.2)
+detected_probability = measurement.gaussian_above_probability(1.2, mean, 0.3)
+rounded_cell ~ Bernoulli(rounded_probability)
+detected ~ Bernoulli(detected_probability)
+forward = kernelof(record(rounded_cell = rounded_cell, detected = detected), mean)
+L = likelihoodof(forward, record(rounded_cell = 1, detected = 1))

@@ -1,0 +1,20 @@
+%%%
+# Coarsened Gaussian observations
+
+These numeric probabilities are likelihood factors for observed events, not
+densities at point measurements and not distributions truncated to an interval.
+%%%
+flatppl_compat = "0.1"
+
+% Probability that a latent measurement is at or below the supplied limit.
+gaussian_below_probability(limit, mean, sigma) = invprobit((limit - mean) / sigma)
+
+% Evaluate the upper tail directly rather than subtracting a CDF from one.
+gaussian_above_probability(limit, mean, sigma) = invprobit((mean - limit) / sigma)
+
+# Reflect intervals in the upper tail so both CDF operands remain small.
+gaussian_interval_probability(lower, upper, mean, sigma) = ifelse(
+    lower >= mean,
+    invprobit((mean - lower) / sigma) - invprobit((mean - upper) / sigma),
+    invprobit((upper - mean) / sigma) - invprobit((lower - mean) / sigma)
+)

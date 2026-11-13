@@ -1,0 +1,18 @@
+%%%
+# Gaussian observation laws
+
+Errors are conditional on the supplied means and uncertainty parameters.
+Calibration standards are treated as exact, with errors on the response only.
+%%%
+flatppl_compat = "0.1"
+
+% Independent measurements; sigma may be a scalar or match the mean vector.
+independent_errors(means, sigma) = Normal.(means, sigma)
+
+% Correlation is dimensionless; sigma contains marginal standard deviations.
+correlated_errors(means, sigma, correlation) = MvNormal(
+    means, correlation .* (addaxes(sigma, 0, 1) * addaxes(sigma, 1, 0))
+)
+
+% Affine response with independent Gaussian measurement error.
+calibration(standards, offset, gain, sigma) = Normal.(offset .+ gain .* standards, sigma)
