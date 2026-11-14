@@ -1,9 +1,8 @@
 # flatppl-stats-measurement
 
-[Function reference](docs/reference.md)
+[Function reference](docs/reference.md) · [Live example](https://live.flatppl.org/#model=https%3A%2F%2Fraw.githubusercontent.com%2Fflatppl-community%2Fflatppl-stats-measurement%2Fmain%2Fexamples%2Fplayground.flatppl&target=Pi_post)
 
-Gaussian measurement errors, correlated uncertainties, affine calibration, and
-event probabilities for rounded or censored readings in FlatPPL 0.1.
+Gaussian measurement laws, correlated uncertainties, affine calibration, and rounded or censored observations for FlatPPL. Library version **0.1**.
 
 ```flatppl
 flatppl_compat = "0.1"
@@ -11,24 +10,8 @@ measurement = load_module("main.flatppl")
 readings ~ measurement.calibration([-1, 0, 2], 0.7, 2, [0.2, 0.3, 0.4])
 ```
 
-All uncertainty arguments are standard deviations. Correlations are supplied
-separately from marginal scales. Constructors return normalized observation
-laws; event helpers return scalar probabilities to use as likelihood factors.
-No prior, calibration fit, or uncertainty on the standards is implicit.
+Uncertainty arguments are standard deviations. Correlations are separate from marginal scales. Observation laws are normalized. Event helpers return probabilities. Priors, calibration fits, and uncertainty on standards remain explicit.
 
-The [calibration example](https://live.flatppl.org/#model=https%3A%2F%2Fraw.githubusercontent.com%2Fflatppl-community%2Fflatppl-stats-measurement%2Fmain%2Fexamples%2Fplayground.flatppl&target=Pi_post)
-infers two parameters and has an analytic Gaussian posterior. Its library import
-is pinned to an immutable commit. The [coarsened example](examples/coarsened.flatppl)
-shows a rounding cell and a detection flag. See the
-[reference](docs/reference.md) for domains, formulas, and finite-precision limits.
+The [calibration example](examples/playground.flatppl) has two parameters and an analytic Gaussian posterior. The [coarsened-observation example](examples/coarsened.flatppl) covers rounding and detection.
 
-With a JavaScript engine checkout and Node 24 or newer:
-
-```sh
-FLATPPL_JS_DIR=/path/to/flatppl-js node tests/check.cjs
-```
-
-Tests use conditional-normal density factorization, direct PDF quadrature of
-both tails, a conjugate posterior, and seeded covariance checks. The command
-installs nothing. [tests/runtime.flatppl](tests/runtime.flatppl) provides explicit
-inputs and deterministic outputs for compiled-backend checks.
+See the reference for definitions, domains, numerical limits, and validation commands.
