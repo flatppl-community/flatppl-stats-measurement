@@ -1,8 +1,9 @@
 %%%
-# Coarsened Gaussian observations
+# Gaussian event probabilities
 
-These numeric probabilities are likelihood factors for observed events, not
-densities at point measurements and not distributions truncated to an interval.
+For $Y\sim N(\mu,\sigma^2)$ and standard Normal CDF $\Phi$, interval mass is
+$\Phi((u-\mu)/\sigma)-\Phi((l-\mu)/\sigma)$. These are dimensionless event
+probabilities, not point densities or truncated laws.
 %%%
 flatppl_compat = "0.1"
 
