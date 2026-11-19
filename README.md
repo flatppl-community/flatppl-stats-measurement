@@ -4,7 +4,7 @@
 
 Library **0.1** provides independent and correlated Gaussian observations and affine calibration:
 
-$$Y_i\sim N(\mu_i,\sigma_i^2),\qquad Y\sim N_n(\mu,DRD),\qquad \mu_i=a+g x_i,\quad D=\operatorname{diag}(\sigma).$$
+$$Y_i\sim N(\mu_i,\sigma_i^2),\qquad Y\sim N_n(\mu,DRD),\qquad \mu_i=a+g x_i,\quad D=\mathrm{diag}(\sigma).$$
 
 Means and responses have shape `[n]`; correlations have shape `[n,n]`. Standard deviations are positive and finite. Correlated errors require `sigma[n]` and a positive-definite correlation matrix $R$. The laws have support $\mathbb R^n$ and retain their scale and determinant normalization.
 
