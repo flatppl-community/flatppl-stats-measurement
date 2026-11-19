@@ -1,8 +1,9 @@
 %%%
 # Gaussian measurement and calibration
 
-Normalized Gaussian observation laws and scalar probabilities for coarsened
-observations. Every uncertainty parameter is a standard deviation.
+Independent $Y_i\sim N(\mu_i,\sigma_i^2)$ or correlated
+$Y\sim N(\mu,DRD)$, with $D=\operatorname{diag}(\sigma)$.
+Coarsened observations use scalar event masses from the Normal CDF.
 %%%
 flatppl_compat = "0.1"
 errors = load_module("src/errors.flatppl")
